@@ -1,0 +1,48 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Account;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Digite quantos numeros inteiros serão lidos: ");
+		int N;
+		N = sc.nextInt();
+		
+		while (N<= 0 || N>10) {
+			System.out.print("Digite um valor valido: ");
+			N = sc.nextInt();
+		}
+		
+		int i;
+		double [] vect = new double [N];
+		double soma = 0;
+		for (i=0; i<vect.length; i++) {
+			System.out.print("Digite o "+ (i+1) +"º numero: ");
+			vect[i] = sc.nextInt();
+			soma += vect[i];
+		}
+		
+		double media = soma / vect.length;
+		
+		System.out.println();
+		System.out.print("Valores = "); 
+		
+		for (i=0; i<vect.length; i++) {
+		System.out.print(+vect[i]+" ");
+		}
+		System.out.println();
+		System.out.println("Soma = "+ soma);
+		System.out.println("Media = "+ media);
+		
+		
+		sc.close();
+	}
+		
+	}

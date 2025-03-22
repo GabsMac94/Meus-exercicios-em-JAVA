@@ -1,0 +1,42 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import entities.Pessoa;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Quantas pessoas você vai digitar? ");
+		int N = sc.nextInt();
+		
+		String[] vetorNome = new String[N];
+		int [] vetorIdade = new int [N];
+		double maiorIdade = 0;
+		String nomeDoMaisVelho = "Null";
+		for (int i=0; i < vetorNome.length; i++) {
+			System.out.print("Digite os dados da "+ (i+1) + "ª pessoa: \n");
+			System.out.print("Nome: ");
+			sc.nextLine();
+			vetorNome[i] = sc.nextLine();
+			System.out.print("Idade: ");
+			vetorIdade[i] = sc.nextInt();
+			
+
+			
+			if (vetorIdade[i] > maiorIdade) {
+				maiorIdade = vetorIdade[i];
+				nomeDoMaisVelho = vetorNome[i];
+			}
+		}
+		
+		
+		System.out.println("Pessoa mais velha: " + nomeDoMaisVelho);
+		
+		
+		sc.close();
+	}
+}

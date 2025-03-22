@@ -1,0 +1,67 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import entities.Pessoa;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Quantas pessoas serão digitadas? ");
+		int N = sc.nextInt();
+		double menorAltura = Double.MAX_VALUE;
+		double maiorAltura = Double.MIN_VALUE;
+		double somaF = 0;
+		double somaM = 0;
+		double mediaAlturaF = 0;
+		int quantHomens = 0;
+		int quantMulheres = 0;
+		
+		Pessoa[] vetorAltura = new Pessoa[N];
+		
+		for (int i= 0; i<vetorAltura.length; i++ ) {
+			System.out.print("Altura da "+ (i+1) + "ª pessoa: ");
+			double altura = sc.nextDouble();
+			System.out.print("Genero da "+ (i+1) + "ª pessoa (F/M): ");
+			char genero = sc.next().charAt(0);
+			
+			vetorAltura[i] = new Pessoa(altura, genero);
+			
+			if (vetorAltura[i].getGenero() == 'F') {
+				somaF += vetorAltura[i].getAltura();
+				quantMulheres += 1;
+			}
+			
+			else if (vetorAltura[i].getGenero() == 'M') {
+				quantHomens += 1;
+			}
+			
+			if (vetorAltura[i].getAltura() > maiorAltura) {
+				maiorAltura = vetorAltura[i].getAltura();
+			}
+			
+			if (vetorAltura[i].getAltura() < menorAltura) {
+				menorAltura = vetorAltura[i].getAltura();
+			}
+			
+		}
+		
+		if (quantMulheres==0) {
+			mediaAlturaF = 0;
+		}
+		else {
+		mediaAlturaF = somaF / quantMulheres;
+		}
+		
+		
+		System.out.printf("\nMenor altura: %.2f%n", menorAltura);
+		System.out.printf("Maior altura: %.2f%n", maiorAltura);
+		System.out.printf("Media altura das mulheres: %.2f%n", mediaAlturaF);
+		System.out.print("Numero de Homens: "+ quantHomens);
+		
+		sc.close();
+	}
+}

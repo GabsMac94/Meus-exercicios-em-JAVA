@@ -1,0 +1,65 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.Pessoa;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+	System.out.print("Quantas pessoas serão digitadas? ");
+	int N;
+	N = sc.nextInt();
+	
+	Pessoa [] vect = new Pessoa[N];
+	double somaAltura = 0;
+	double menor16 = 0;
+	double maior16 = 0;
+	double mediaMenor16 = 0;
+	double mediaMaior16 = 0;
+	for (int i=0; i<vect.length; i++) {
+		System.out.println("Dados da "+ (i+ 1) +"ª pessoa:");
+		sc.nextLine();
+		System.out.print("Nome: ");
+		String nome = sc.nextLine();
+		System.out.print("Idade: ");
+		int idade = sc.nextInt();
+		System.out.print("Altura: ");
+		double altura = sc.nextDouble();
+		somaAltura += altura;
+		
+		vect[i] = new Pessoa(nome, idade, altura);
+			
+		if (vect[i].getIdade()<16) {
+			menor16 = menor16 + 1;
+		}
+		
+			mediaMenor16 = menor16 / vect.length;
+			mediaMaior16 = maior16 / vect.length;
+			
+			
+	}
+	
+	System.out.println();
+	double alturaMedia = somaAltura / vect.length;
+	double percentualMenor16 = (double) menor16 / N* 100;
+	
+	System.out.printf("Media de alturas: %.2f%%%n", alturaMedia);
+	System.out.println("Media de idades inferiores a 16: " +percentualMenor16+"%.");
+	System.out.println();
+	
+	
+	for (int i= 0; i< vect.length; i++) {
+		if (vect[i].getIdade()< 16) {
+			System.out.println("Dados menor de 16 anos: " + vect[i].getNome() + ", idade de " +vect[i].getIdade() + "anos.");
+		}
+	}
+	
+	
+		sc.close();
+	}
+}

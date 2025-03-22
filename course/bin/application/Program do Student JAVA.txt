@@ -1,0 +1,30 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+import entities.Student;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		Student student = new Student();
+		System.out.print("Enter student's name: ");
+		student.name = sc.nextLine();
+		System.out.print("Enter student's first grade: ");
+		student.n1 = sc.nextDouble();
+		System.out.print("Enter student's second grade: ");
+		student.n2 = sc.nextDouble();
+		System.out.print("Enter student's third grade: ");
+		student.n3 = sc.nextDouble();
+		
+		System.out.println(student.media());
+		System.out.println();
+		System.out.println(student);
+		
+		sc.close();
+	}
+
+}
